@@ -2,7 +2,11 @@
   "compilerOptions": {
     "paths": {
       "/~/*": ["./node_modules/*"],
-      "/@fillscreen": ["/Users/anton/github/gdv/src/01/setup-fillscreen.ts"]
+      "/@fillscreen": ["/workspaces/gdv/src/01/setup-fillscreen.ts"],
+      "/@checkerboard": ["/workspaces/gdv/src/02/setup-checkerboard.ts"],
+      "/@circle": ["/workspaces/gdv/src/02/setup-circle.ts"],
+      "/@circlesimple": ["/workspaces/gdv/src/02/setup-circlesimple.ts"],
+      "/@gradient": ["/workspaces/gdv/src/02/setup-gradient.ts"]
     }
   }
 }
