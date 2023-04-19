@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "/~/*": ["./node_modules/*"],
+      "/@fillscreen": ["/Users/anton/github/gdv/src/01/setup-fillscreen.ts"]
+    }
+  }
+}

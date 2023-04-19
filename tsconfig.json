@@ -1,19 +1,21 @@
 {
+    "extends": "./.aliases.tsconfig.json",
     "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "target": "es2015",
-        "moduleResolution": "node",
-        "module": "CommonJS",
-        "allowJs": true,
-        "esModuleInterop": true,
-        "types": [
-            "mocha"
-        ]
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "lib": ["ESNext", "DOM"],
+      "moduleResolution": "Node",
+      "strict": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "esModuleInterop": true,
+      "noEmit": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "skipLibCheck": true
     },
-    "exclude": [
-        "dist",
-        "src/todo"
-    ]
-}
+    "include": ["src"]
+  }
+  

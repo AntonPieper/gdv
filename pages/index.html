@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>GDV Übungen</title>
-  <link rel="icon" type="image/png" href="ai-logo.png">
-  <script type="text/javascript" src="index.bundle.js"></script>
+  <link rel="icon" type="image/png" href="/ai-logo.png">
+  <link rel="stylesheet" href="/~/bootstrap/scss/bootstrap.scss">
+  <script type="module" src="/src/index.ts"></script>
 </head>
 
 <body>
@@ -20,27 +21,27 @@
   <br>
 
   <div class="list-group list-group-flush">
-    <% htmlWebpackPlugin.options.exercises.forEach((exercise) => { %>
+    <% exercises.forEach((exercise) => { %>
     <div class="list-group-item flex-column align-items-start">
       <br>
       <div class="d-flex w-100 justify-content-between">
-        <% if (exercise['exists'] === true) { %>
-        <h5 class="mb-2"><%= exercise['title'] %></h5>
+        <% if (exercise.exists === true) { %>
+        <h5 class="mb-2"><%= exercise.title %></h5>
         <% } else { %>
-        <h5 class="mb-2" style="color:#C0C0C0"><%= exercise['title'] %></h5>
+        <h5 class="mb-2" style="color:#C0C0C0"><%= exercise.title %></h5>
         <% } %>
       </div>
-      <% exercise['entries'].forEach((entry) => { %>
-        <% if (entry['exists'] === true) { %>
-        <a href=<%= entry['file'] %>
+      <% Object.entries(exercise.entries).forEach(([file, entry]) => { %>
+        <% if (entry.exists === true) { %>
+        <a href=<%= `/${file}.html` %>
         <% } else { %>
         <a style="color:#C0C0C0"
         <% } %>
           class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
-            <h6 class="mb-0"><%= entry['title'] %></h6>
+            <h6 class="mb-0"><%= entry.title %></h6>
           </div>
-          <p class="mb-0"><%= entry['description'] %> </p>
+          <p class="mb-0"><%= entry.description %> </p>
         </a>
         <% }); %>
     </div>
