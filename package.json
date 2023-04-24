@@ -2,6 +2,7 @@
   "name": "gdv",
   "version": "2022.2.0",
   "description": "GDV Uebungen",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
