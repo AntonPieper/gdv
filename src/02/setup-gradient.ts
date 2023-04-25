@@ -10,13 +10,11 @@ export function swapBuffers() {
 }
 
 function drawGradient() {
-  canvas = document.getElementById("result") as HTMLCanvasElement;
+  const canvas = document.getElementById("result") as HTMLCanvasElement;
   if (canvas === null) return;
   const context = canvas.getContext("2d");
   if (!context) return;
   ctx = context;
-
-  var pixel = ctx.createImageData(1, 1);
 
   imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
@@ -24,15 +22,10 @@ function drawGradient() {
   for (let y = 0; y < canvas.height; y++) {
     for (let x = 0; x < canvas.width; x++) {
       gradient(data, x, y, canvas.width, canvas.height);
-
-      // update pixel in HTML context2d
-      for (let i = 0; i < 4; i++)
-        pixel.data[i] = data[(x + y * canvas.width) * 4 + i];
-      ctx.putImageData(pixel, x, y);
     }
   }
+  swapBuffers();
 }
-
-window.addEventListener("load", (evt) => {
+window.addEventListener("load", () => {
   drawGradient();
 });

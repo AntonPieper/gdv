@@ -11,24 +11,19 @@ export function swapBuffers() {
 }
 
 function drawCircle(canvas: HTMLCanvasElement, cx: number, cy: number) {
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return;
-  const pixel = ctx.createImageData(1, 1);
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const context = canvas.getContext("2d");
+  if (!context) return;
+  ctx = context;
+  imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
 
   for (let y = 0; y < canvas.height; y++) {
     for (let x = 0; x < canvas.width; x++) {
       circle(data, x, y, cx, cy, canvas.width, canvas.height, canvas.width / 3);
-
-      // update pixel in HTML context2d
-      for (let i = 0; i < 4; i++)
-        pixel.data[i] = data[(x + y * canvas.width) * 4 + i];
-      ctx.putImageData(pixel, x, y);
     }
   }
 
-  ctx.putImageData(imageData, 0, 0);
+  swapBuffers();
 }
 
 window.addEventListener("load", (evt) => {
@@ -39,7 +34,6 @@ window.addEventListener("load", (evt) => {
   ctx = context;
   
   imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  const data = imageData.data;
 
   var node1 = new Node({
     canvas: canvas,

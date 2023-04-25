@@ -1,6 +1,5 @@
 import { fillscreen } from "./fillscreen";
 
-let canvas: HTMLCanvasElement;
 let ctx: CanvasRenderingContext2D;
 let imageData: ImageData;
 
@@ -10,7 +9,7 @@ export function swapBuffers() {
 }
 
 function drawFillscreen() {
-  canvas = document.getElementById("result") as HTMLCanvasElement;
+  const canvas = document.getElementById("result") as HTMLCanvasElement;
   if (canvas === null) return;
   const context = canvas.getContext("2d");
   if (!context) return;

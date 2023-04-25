@@ -20,5 +20,9 @@ export function checkerboard(
   width: number,
   height: number
 ) {
+  const index = (x + y * width) * 4;
+  const mod = 1 & (x / width * 8 + ~~(y / height * 8));
+  for (let i = 0; i < 3; ++i) data[index + i] = ~~(mod > 0 ? 0xff : 0x00);
+  data[index + 3] = 0xff;
   // TODO: Imagine an 8x8 tile checkerboard across the width and height of the canvas. Compute if the pixel at position (x, y) is inside a black or white tile. Set the pixel color accordingly in the pixel array 'data'.
 }

@@ -20,5 +20,11 @@ export function circleSimple(
   height: number,
   radius: number
 ) {
+  const index = (x + y * width) * 4;
+
+  const isInCircle = (Math.hypot(x - width / 2, y - height / 2)  - radius);
+  for (let i = 0; i < 3; ++i)
+    data[index + i] = Math.min(Math.max(isInCircle * 255, 0), 255);
+  data[index + 3] = 0xff;
   // TODO: Imagine a circle with center in the middle of the framebuffer and given radius. Which pixel is the center? Check if pixel (x, y) is inside the circle or not. Set the pixel color accordingly in the pixel array 'data'.
 }

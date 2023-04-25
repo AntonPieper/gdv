@@ -18,6 +18,10 @@ export function gradient(
   width: number,
   height: number
 ) {
+  const percentage = x / width;
+  const index = (x + y * width) * 4;
+  for (let i = 0; i < 3; ++i) data[index + i] = ~~(percentage * 256);
+  data[index + 3] = 0xff;
   // TODO: Compute the position of pixel (x, y) in the linearised 'data' array. Each pixel is using 4 bytes in the data array, one each for red, green, blue and alpha.
   // TODO:  Set the red, green and blue components of pixel (x, y) to draw a gradient from black (0) to white (255). Set the alpha component to maximum (255).
 }

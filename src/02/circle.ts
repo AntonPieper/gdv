@@ -24,5 +24,11 @@ export function circle(
   height: number,
   radius: number
 ) {
+  const index = (x + y * width) * 4;
+
+  const isInCircle = (Math.hypot(x - cx, y - cy)  - radius);
+  for (let i = 0; i < 3; ++i)
+    data[index + i] = Math.min(Math.max(isInCircle * 255, 0), 255);
+  data[index + 3] = 0xff;
   // TODO: Imagine a circle with center (cx, cy) and given radius. Check if pixel (x, y) is inside this circle or not. Set the pixel color accordingly in the pixel array 'data'.
 }
