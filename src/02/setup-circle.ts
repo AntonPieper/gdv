@@ -1,5 +1,3 @@
-import "bootstrap";
-
 import { circle } from "./circle";
 import { Node } from "../ui/ui";
 

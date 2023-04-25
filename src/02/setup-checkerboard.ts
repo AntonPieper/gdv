@@ -1,4 +1,3 @@
-import "bootstrap";
 import { checkerboard } from "./checkerboard";
 
 var canvas: HTMLCanvasElement;

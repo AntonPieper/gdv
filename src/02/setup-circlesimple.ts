@@ -1,5 +1,3 @@
-import "bootstrap";
-
 import { circleSimple } from "./circlesimple";
 
 var canvas: HTMLCanvasElement;
@@ -35,7 +33,9 @@ function drawCircle(canvas: HTMLCanvasElement) {
 window.addEventListener("load", (evt) => {
   canvas = document.getElementById("result") as HTMLCanvasElement;
   if (canvas === null) return;
-  ctx = canvas.getContext("2d");
+  const context = canvas.getContext("2d");
+  if (!context) return;
+  ctx = context;
   imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
 

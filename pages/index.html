@@ -3,53 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <title>GDV Übungen</title>
-    <link rel="stylesheet" href="/node_modules/bootstrap/scss/bootstrap.scss" />
-    <script type="module" src="/src/index.ts"></script>
+    <link rel="stylesheet" href="index.css">
     <link rel="icon" type="image/png" href="/ai-logo.png" />
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="/index.html">
-          <img
-            src="ai-logo.png"
-            width="30"
-            height="30"
-            class="d-inline-block align-top"
-            alt=""
-          />
-          Graphische Datenverarbeitung
-        </a>
-      </div>
-    </nav>
-    <br />
+    <%- include("components/header", {title: ""}) %>
 
-    <div class="list-group list-group-flush">
+    <div class="max-w-3xl m-auto mt-4">
       <% exercises.forEach((exercise) => { %>
-      <div class="list-group-item flex-column align-items-start">
-        <br />
-        <div class="d-flex w-100 justify-content-between">
+      <section class="px-4 py-8 border-b last:border-none">
+        <div class="flex justify-between px-4 text-xl font-bold mb-4">
           <% if (exercise.exists) { %>
-          <h5 class="mb-2"><%= exercise.title %></h5>
+          <h5><%= exercise.title %></h5>
           <% } else { %>
-          <h5 class="mb-2" style="color: #c0c0c0"><%= exercise.title %></h5>
+          <h5 class="text-gray-400"><%= exercise.title %></h5>
           <% } %>
         </div>
         <% Object.entries(exercise.entries).forEach(([file, entry]) => { %>
-        <% if (entry.exists) { %>
-        <a href=<%= `/${file}.html` %>
-        <% } else { %>
-        <a style="color: #c0c0c0" <% } %>
-          class="list-group-item list-group-item-action flex-column
-          align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h6 class="mb-0"><%= entry.title %></h6>
+        <a <%- entry.exists ? `href="/${file}.html"` : "" %>
+          class="block border border-b-0 first-of-type:rounded-t-xl last-of-type:rounded-b-xl last-of-type:border-b
+            <%= entry.exists ? "hover:bg-gray-50 hover:text-blue-700 focus:text-blue-700" : "text-gray-400" %>">
+          <div class="p-4">
+            <div class="flex justify-between">
+              <h6 class="font-medium"><%= entry.title %></h6>
+            </div>
+            <p class="mt-2 text-sm text-gray-400"><%= entry.description %></p>
           </div>
-          <p class="mb-0"><%= entry.description %></p>
         </a>
         <% }); %>
-      </div>
+      </section>
       <% }); %>
     </div>
   </body>

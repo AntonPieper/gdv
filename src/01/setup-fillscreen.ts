@@ -1,5 +1,3 @@
-import "bootstrap";
-
 import { fillscreen } from "./fillscreen";
 
 let canvas: HTMLCanvasElement;

@@ -1,5 +1,3 @@
-import "bootstrap";
-
 import { gradient } from "./gradient";
 
 var canvas: HTMLCanvasElement;

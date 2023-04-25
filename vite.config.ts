@@ -38,7 +38,6 @@ export default defineConfig(() => ({
   publicDir: "../public",
   resolve: {
     alias: {
-      "/node_modules": "../node_modules",
       "/src": "../src",
     },
   },
