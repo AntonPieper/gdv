@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+      {
+          "label": "Vite: dev",
+          "type": "npm",
+          "script": "dev",
+          "isBackground": true,
+          "problemMatcher": [
+              {
+                  "owner": "vite",
+                  "source": "Vite",
+                  "background": {
+                      "activeOnStart": true,
+                      "beginsPattern": ".",
+                      "endsPattern": "."
+                  },
+                  "pattern": [
+                    {
+                      "regexp": ".",
+                      "file": 1,
+                      "location": 2,
+                      "message": 3
+                    }
+                  ]
+              }
+          ]
+      }
+  ]
+}

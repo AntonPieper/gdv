@@ -2,15 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Vite: dev",
-      "type": "node-terminal",
+      "type": "chrome",
       "request": "launch",
-      "command": "pnpm run dev",
-      "serverReadyAction": {
-        "action": "debugWithChrome",
-        "pattern": "https?://.+:.*m([0-9]+)",
-        "uriFormat": "http://localhost:%s"
-      }
+      "name": "Launch Chrome",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src",
+      "preLaunchTask": "Vite: dev",
     }
   ]
 }
