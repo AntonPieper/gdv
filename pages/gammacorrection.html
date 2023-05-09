@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Graphische Datenverarbeitung - Color - Gamma Correction</title>
+    <link rel="stylesheet" href="index.css" />
+    <script type="module" src="/src/03/setup-gammacorrection.ts"></script>
+    <link rel="icon" type="image/png" href="ai-logo.png" />
+  </head>
+
+  <body>
+    <%- include("components/header", { title: "Gamma Correction" }) %>
+    <main
+      class="max-w-4xl mx-auto px-4 grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 justify-center"
+    >
+      <figure>
+        <canvas
+          class="max-w-full mx-auto"
+          id="result"
+          width="800"
+          height="400"
+        ></canvas>
+        <figcaption class="text-center my-2 text-gray-500">
+          <div class="form-group text-left">
+            <label for="gammaslider">Gamma</label>
+            <input
+              class="form-control-range"
+              type="range"
+              id="gammaslider"
+              min="1"
+              max="5"
+              step="0.1"
+            />
+          </div>
+          Determine the color of each pixel after the gamma correction
+        </figcaption>
+      </figure>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+import { gammaAdjust } from './gammacorrection';
+
+let gammaImageData: ImageData;
+let gammaCtx: CanvasRenderingContext2D;
+let gamma = 1;
+
+window.addEventListener('load', () => {
+
+    const gammaSlider =
+          document.getElementById("gammaslider") as HTMLInputElement;
+    const gammaCanvas = document.getElementById("result") as HTMLCanvasElement;
+    if (gammaCanvas === null)
+        return;
+    const context = gammaCanvas.getContext("2d");
+    if (context === null) return;
+    gammaCtx = context;
+
+    const gammaImg = new Image();
+    gammaImg.onload = () => {
+        gammaCtx.drawImage(gammaImg, 0, 0);
+        gammaImageData = gammaCtx.getImageData(
+            0, 0, gammaImg.width, gammaImg.height);
+        gammaAdjustImage();
+    };
+    gammaImg.src = "gammacorrection.png";
+
+    gammaSlider.addEventListener('change', e => {
+        gamma = Number(gammaSlider.value);
+        gammaAdjustImage();
+    });
+    gamma = Number(gammaSlider.value);
+});
+
+function gammaAdjustImage() {
+    const imageData = gammaCtx.getImageData(
+        0, 0,
+        gammaImageData.width, gammaImageData.height
+    );
+    for (let width = 0; width < gammaImageData.width; width++) {
+        for (let height = 0; height < gammaImageData.height; height++) {
+            gammaAdjust(gamma,
+                gammaImageData.data, imageData.data,
+                width, height,
+                gammaImageData.width, gammaImageData.height
+            );
+        }
+    }
+    gammaCtx.putImageData(imageData, 0, 0);
+}

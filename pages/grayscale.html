@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Graphische Datenverarbeitung - Color - XYZ</title>
+    <link rel="stylesheet" href="index.css" />
+    <script type="module" src="/src/03/setup-grayscale.ts"></script>
+    <link rel="icon" type="image/png" href="ai-logo.png" />
+  </head>
+
+  <body>
+    <%- include("components/header", { title: "Grayscale" }) %>
+    <main
+      class="max-w-4xl mx-auto px-4 grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 justify-center"
+    >
+      <figure>
+        <canvas
+          class="max-w-full mx-auto"
+          id="result"
+          width="512"
+          height="384"
+        ></canvas>
+        <figcaption class="text-center my-2 text-gray-500">
+          Create a grayscale version by converting the RBG values to XYZ and use
+          the Y value.
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          class="max-w-full mx-auto"
+          src="grayscale-finished.png"
+          width="512"
+          height="384"
+        />
+        <figcaption class="text-center my-2 text-gray-500">
+          Reference image
+        </figcaption>
+      </figure>
+      <figure>
+        <canvas
+          class="max-w-full mx-auto"
+          id="original"
+          width="512"
+          height="384"
+        ></canvas>
+        <figcaption class="text-center my-2 text-gray-500">Original</figcaption>
+      </figure>
+    </main>
+  </body>
+</html>
